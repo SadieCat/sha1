@@ -13,6 +13,9 @@
 extern "C" {
 #endif
 
+#define SHA1_BLOCK_SIZE 64
+#define SHA1_DIGEST_SIZE 20
+
 typedef struct
 {
     uint32_t state[5];
@@ -36,7 +39,7 @@ void SHA1Update(
     );
 
 void SHA1Final(
-    unsigned char digest[20],
+    unsigned char digest[SHA1_DIGEST_SIZE],
     SHA1_CTX * context
     );
 

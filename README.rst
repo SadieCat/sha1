@@ -6,6 +6,9 @@ SYNOPSIS
     
     #include <sha1.h>
 
+    #define SHA1_BLOCK_SIZE 64
+    #define SHA1_DIGEST_SIZE 20
+
     void SHA1Transform(
         uint32_t state[5],
         const unsigned char buffer[64]);
@@ -19,7 +22,7 @@ SYNOPSIS
         uint32_t len);
 
     void SHA1Final(
-        unsigned char digest[20],
+        unsigned char digest[SHA1_DIGEST_SIZE],
         SHA1_CTX * context);
 
 DESCRIPTION
@@ -47,7 +50,7 @@ EXAMPLES
      which is ``0xa9993e36476816aba3e25717850c26c9cd0d89d''.
 
            SHA1_CTX sha;
-           uint8_t results[20];
+           uint8_t results[SHA1_DIGEST_SIZE];
            char *buf;
            int n;
 

@@ -37,7 +37,7 @@ void testvec1(
 {
   char const string[] = "abc";
   char const expect[] = "a9993e364706816aba3e25717850c26c9cd0d89d";
-  char result[21];
+  char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   size_t offset;
 
@@ -45,7 +45,7 @@ void testvec1(
   SHA1( result, string, strlen(string) );
 
   /* format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
@@ -59,7 +59,7 @@ void testvec2(
 {
   char const string[] = "";
   char const expect[] = "da39a3ee5e6b4b0d3255bfef95601890afd80709";
-  char result[21];
+  char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   size_t offset;
 
@@ -67,7 +67,7 @@ void testvec2(
   SHA1( result, string, strlen(string) );
 
   /*format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
@@ -81,7 +81,7 @@ void testvec3(
 {
   char const string[] = "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq";
   char const expect[] = "84983e441c3bd26ebaae4aa1f95129e5e54670f1";
-  char result[21];
+  char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   size_t offset;
 
@@ -89,7 +89,7 @@ void testvec3(
   SHA1( result, string, strlen(string) );
 
   /* format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
@@ -104,7 +104,7 @@ void testvec4(
   char const string1[] = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghij";
   char const string2[] = "klmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
   char const expect[] = "a49b2446a02c645bf419f995b67091253a04a259";
-  unsigned char result[21];
+  unsigned char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   size_t offset;
   SHA1_CTX ctx;
@@ -116,7 +116,7 @@ void testvec4(
   SHA1Final(result, &ctx);
 
   /* format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
@@ -130,7 +130,7 @@ void testvec5(
 {
   char string[1000001];
   char const expect[] = "34aa973cd4c4daa4f61eeb2bdbad27316534016f";
-  char result[21];
+  char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   int iterator;
   size_t offset;
@@ -145,7 +145,7 @@ void testvec5(
   SHA1( result, string, strlen(string) );
 
   /* format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
@@ -159,7 +159,7 @@ void testvec6(
 {
   char const string[] = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno";
   char const expect[] = "7789f0c9ef7bfc40d93311143dfbe69e2017f592";
-  unsigned char result[21];
+  unsigned char result[SHA1_DIGEST_SIZE + 1];
   char hexresult[41];
   int iterator;
   size_t offset;
@@ -173,7 +173,7 @@ void testvec6(
   SHA1Final(result, &ctx);
 
   /* format the hash for comparison */
-  for( offset = 0; offset < 20; offset++) {
+  for( offset = 0; offset < SHA1_DIGEST_SIZE; offset++) {
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
